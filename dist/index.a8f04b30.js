@@ -638,7 +638,7 @@ class MeshItem {
 init();
 new EffectCanvas();
 
-},{"three":"ktPTu","./shaders/fragmentShader.glsl":"2S4X0","./shaders/vertexShader.glsl":"lv276","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktPTu":[function(require,module,exports) {
+},{"three":"ktPTu","./shaders/vertexShader.glsl":"lv276","./shaders/fragmentShader.glsl":"2S4X0","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ktPTu":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ACESFilmicToneMapping", ()=>ACESFilmicToneMapping
@@ -30437,11 +30437,11 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"2S4X0":[function(require,module,exports) {
-module.exports = "#define GLSLIFY 1\nuniform sampler2D uTexture;\nuniform float uAlpha;\nuniform vec2 uOffset;\nvarying vec2 vUv;\n\nvec3 rgbShift(sampler2D textureImg, vec2 uv, vec2 offset) {\n    float r = texture2D(textureImg, uv + offset * 0.125 ).r;\n    float g = texture2D(textureImg, uv + offset * 0.175 ).g;\n    float b = texture2D(textureImg, uv + offset * 0.15 ).b;\n\n    return vec3(r,g,b);\n}\n\nvoid main() {\n    vec3 color = rgbShift(uTexture, vUv, uOffset);\n    gl_FragColor = vec4(color, uAlpha);\n}";
-
 },{}],"lv276":[function(require,module,exports) {
 module.exports = "#define GLSLIFY 1\nuniform sampler2D uTexture;\nuniform vec2 uOffset;\n\nvarying vec2 vUv;\n\nfloat PI = 3.141529;\n\nvec3 deformationCurve(vec3 pos, vec2 uv, vec2 offset) {\n    pos.y += 0.5 * sin(uv.y * PI) * offset.y;\n    // pos.x += 5. * sin(uv.y * PI) * offset.x;\n    return pos;\n}\n\nvoid main() {\n    vUv = uv;\n    vec3 newPos = deformationCurve(position, uv, uOffset);\n    gl_Position = projectionMatrix * modelViewMatrix * vec4(newPos, 1.0);\n}";
+
+},{}],"2S4X0":[function(require,module,exports) {
+module.exports = "#define GLSLIFY 1\nuniform sampler2D uTexture;\nuniform float uAlpha;\nuniform vec2 uOffset;\nvarying vec2 vUv;\n\nvec3 rgbShift(sampler2D textureImg, vec2 uv, vec2 offset) {\n    float r = texture2D(textureImg, uv + offset * 0.125 ).r;\n    float g = texture2D(textureImg, uv + offset * 0.175 ).g;\n    float b = texture2D(textureImg, uv + offset * 0.15 ).b;\n\n    return vec3(r,g,b);\n}\n\nvoid main() {\n    vec3 color = rgbShift(uTexture, vUv, uOffset);\n    gl_FragColor = vec4(color, uAlpha);\n}";
 
 },{}]},["44WRj","5AKj5"], "5AKj5", "parcelRequire5f57")
 
