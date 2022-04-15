@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body, html {
+    overscroll-behavior: none;
+    background-color: #000;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+}
+
+.scrollable {
+    position: absolute;
+    height: 900vh;
+    width: 900vh;
+    top: 0;
+    left: 0;
+    will-change: transform;
+}
+
+.img-container {
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+img {
+    position: absolute;
+    height: 80%;
+    width: auto;
+    visibility: hidden;
+}
+
+@media (max-width:700px){
+    img{
+        height: auto;
+        width: 80%;
+        margin: 2rem;
+    }
+    .scrollable {
+        height: 300vh;
+        width: 300vh;
+    }
+}
+
+canvas {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
